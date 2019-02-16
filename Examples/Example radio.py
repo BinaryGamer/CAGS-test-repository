@@ -2,8 +2,8 @@ from microbit import *
 import radio
 radio.config(length=64, queue=1)
 radio.on()
-def t(f, b, l, r):
-    s="bot:{}:{}:{},{}".format(f, b, l, r)
+def t(f, b, l, r, horn):
+    s="bot:{}:{}:{},{}:{}".format(f, b, l, r,horn)
     radio.send(s)
 z=0
 x=0
@@ -15,6 +15,7 @@ while True:
     back=0
     left=1
     right=1
+    horn=False
     if z>0:
         if z > 1023:
             z=1023
@@ -35,6 +36,7 @@ while True:
             x=1023
         left=x/1023
         left=1-left
-    print((forward, back, left, right))
+    if button_a.is_pressed():
+        horn=True
     sleep(50)
-    t(forward, back, left, right)
+    t(forward, back, left, right, horn)
