@@ -7,7 +7,7 @@ def t(f, b, l, r, horn):
     radio.send(s)
 z=0
 x=0
-ALPHA=0.9
+
 while True:
     z=accelerometer.get_z()
     x=accelerometer.get_x()
@@ -19,7 +19,7 @@ while True:
     if z>0:
         if z > 1023:
             z=1023
-        back=z        
+        back=z
     elif z<0:
         z=abs(z)
         if z > 1023:
@@ -38,5 +38,6 @@ while True:
         left=1-left
     if button_a.is_pressed():
         horn=True
+    print((accelerometer.get_x(), accelerometer.get_z()))
     sleep(50)
     t(forward, back, left, right, horn)
