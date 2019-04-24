@@ -2,7 +2,7 @@ from microbit import *
 import neopixel
 import radio
 radio.on()
-def forward(speed=0.3):
+def forward(speed=0.1):
     pin0.write_analog(1023*speed)
     pin1.write_analog(1023*speed)
     pin8.write_digital(0)
